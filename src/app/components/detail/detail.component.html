@@ -1,0 +1,43 @@
+<div class="grid-container">
+     <h1 *ngIf="!compare" class="mat-h1 center-item">{{ name }}</h1> 
+     <h1 *ngIf="compare" class="mat-h1 center-item">{{ selCountry }} vs {{name}}</h1> 
+    <mat-grid-list cols="2" rowHeight="250px" >
+        <mat-grid-tile [colspan]="1" [rowspan]="2" *ngFor="let card of cards">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{ card.name }}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        <img mat-card-md-image [src]="card.flag" class="dashboard-card-content">
+                    </p>
+                    <p>
+                        <span>Capital: </span>{{ card.capital }}
+                    </p>
+                    <p>  
+                        <mat-list role="list">
+                            <span>Currencies: </span>
+                            <mat-list-item role="listitem" *ngFor="let currency of card.currencies">
+                                {{ currency.code }} | {{ currency.name }} | {{ currency.symbol }}
+                            </mat-list-item>
+                        </mat-list>
+                    </p>
+                    <p>
+                        <span>Region: </span> {{ card.region }}
+                    </p>
+                    <p>
+                        <span>Sub Region: </span> {{ card.subregion }}
+                    </p>
+                    <p>
+                        <span>Timezones: </span> {{ card.timezones }}
+                    </p>
+                    <p>
+                        <span>Borders: </span> {{ card.borders }}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
